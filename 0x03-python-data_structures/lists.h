@@ -1,19 +1,26 @@
-#!/usr/bin/python3
+#ifndef LISTS_H
+#define LISTS_H
 
-def add_tuple(tuple_a=(), tuple_b=()):
-    lenA = len(tuple_a)
-    lenB = len(tuple_b)
-# check for tuple_a
-    if lenA < 1:
-        tuple_a = (0, 0)
-    elif lenA < 2:
-        tuple_a = (tuple_a[0], 0)
+#include <stdio.h>
+#include <stdlib.h>
 
-# check for tuple_b
-    if lenB < 1:
-        tuple_b = (0, 0)
-    elif lenB < 2:
-        tuple_b = (tuple_b[0], 0)
+/**
+ * struct listint_s - singly linked list
+ * @n: integer
+ * @next: points to the next node
+ *
+ * Description: singly linked list node structure
+ * for Holberton project
+ */
+typedef struct listint_s
+{
+	int n;
+	struct listint_s *next;
+} listint_t;
 
-    res = (tuple_a[0] + tuple_b[0], tuple_a[1] + tuple_b[1])
-    return res
+size_t print_listint(const listint_t *h);
+listint_t *add_nodeint_end(listint_t **head, const int n);
+void free_listint(listint_t *head);
+int is_palindrome(listint_t **head);
+
+#endif /* LISTS_H */
